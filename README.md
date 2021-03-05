@@ -13,3 +13,9 @@
 # Landmark detetion:
 - Để xác định một vật thể ta xác định các điểm trên vật thể đặc trưng cho nó. Ví dụ: Xác định 1 khuôn mặt, ta muốn biết điểm chỉ khóe mắt ở đâu? điểm chỉ vùng ngoài của mặt ở đâu?...; Hoặc với 1 người ta muốn biết điểm chỉ đầu ở đâu, khuỷu tay ở đâu?... để phục vụ cho việc xem người đó đang chạy hay đi bộ,.... Do đó, output của mô hình ConvNet sẽ tùy thuộc và số điểm landmark chúng ta muốn lấy.
 <img src ='https://i.imgur.com/axs7Huq.jpg'>
+
+# Sliding object detetion:
+- Để xác định 1 đối tượng trong 1 bức ảnh, ý tưởng là lấy 1 ô vuông nhỏ (xem như là cửa sổ) và đặt nó lên các vị trí của bức ảnh và áp dụng ConvNet xem có vật thể trong phần ô vuông này không?
+<img src ='https://i.imgur.com/4iZ5T0W.jpg'>
+
+- **Câu hỏi đặt ra:** Với việc đặt rất nhiều ô vuông lên bức ảnh, việc áp dụng ConvNet lên từng phần này sẽ tăng chi phí tính toán (ví dụ đặt 9 lần sẽ tăng lên 9 lần), có cách nào tối ưu hóa việc tính toán hay ko? 
