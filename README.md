@@ -18,4 +18,11 @@
 - Để xác định 1 đối tượng trong 1 bức ảnh, ý tưởng là lấy 1 ô vuông nhỏ (xem như là cửa sổ) và đặt nó lên các vị trí của bức ảnh và áp dụng ConvNet xem có vật thể trong phần ô vuông này không?
 <img src ='https://i.imgur.com/4iZ5T0W.jpg'>
 
-- **Câu hỏi đặt ra:** Với việc đặt rất nhiều ô vuông lên bức ảnh, việc áp dụng ConvNet lên từng phần này sẽ tăng chi phí tính toán (ví dụ đặt 9 lần sẽ tăng lên 9 lần), có cách nào tối ưu hóa việc tính toán hay ko? 
+- **Câu hỏi đặt ra:** Với việc đặt rất nhiều ô vuông lên bức ảnh, việc áp dụng ConvNet lên từng phần này sẽ tăng chi phí tính toán (ví dụ đặt 9 lần sẽ tăng lên 9 lần), có cách nào tối ưu hóa việc tính toán hay ko?
+
+# Áp dụng Conv với Sliding Window
+- Chuyển FC layer thành Conv layer, ví dụ với input: 14x14x3, output: 1x1x4:
+<img src ='https://i.imgur.com/3uW0oal.jpg'>
+
+- Ta thấy với mỗi phần 14x14x3 trong bức ảnh lớn 16x16x3 khi áp dụng cùng 1 mô hình ConvNet thì sẽ dùng lại các tính toán--> Khi đó ta có output sẽ là 2x2x4 sẽ tương ứng với từng phần 14x14x3 trong 16x16x3. Do đó việc áp dụng toàn bức ảnh trong 1 mô hình ConvNet sẽ cho đầu ra cung lúc mà không cần áp dụng ConvNet lên từng phần cửa số làm gia tăng chi phí tính toán!!
+<img src ='https://i.imgur.com/wBpO0gH.jpg'>
