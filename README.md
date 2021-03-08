@@ -49,4 +49,19 @@
 # Anchor Boxes
 - Ta muốn khi nhìn vào 1 bức tranh không chỉ nhận dạng và xác định vị trí 1 vật thể mà nhiều vật thể --> chúng ta sử dụng anchor boxes.
 <img src ='https://i.imgur.com/CcjKkMz.jpg'>
+
 - Đối với 1 vật thể khi training lựa chọn ô cell chứa điểm giữa của vật thể; còn với anchor boxes ta lựa chọn cell chứa điểm giữa của vật thể và anchor boxes đối với cell đó có IoU lớn nhất.(Bởi vì ngoài chứa điểm giữa vật thể thì anchor boxes sẽ còn chứa vùng xác định các vật thể khác --> sẽ có nhiều box khác nhau xác định vật thể còn lại --> lựa chon IoU cao nhất sẽ tối ưu hóa cho việc training!)
+<img src ='https://i.imgur.com/TJ7f6Jm.jpg'>
+
+# YOLO
+- Training:
+    - Để xây dựng (X,y) để phục vụ training mô hình, ví dụ ta chia bức ảnh thành 3x3 và mong muốn output là anchor boxes 2x8 cho mỗi cell, khi đó ta cần đưa ra y có dạng 3x3x16 ở đó mỗi cell sẽ chứa giá trị anchor boxes của riêng mình.
+    <img src ='https://i.imgur.com/I4If5Wc.jpg'> 
+
+- Predition:
+    - X --> ConvNet --> y; đối với mỗi cell mô hình sẽ cho ra 2 box xác định vật thể ( trong ví dụ này: người và ô tô):
+    <img src ='https://i.imgur.com/2pSfY6o.jpg'>
+    - Chúng ta loại bỏ những box mà pc bé (ví dụ pc =< 0.5):
+    <img src ='https://i.imgur.com/g4uMfbL.jpg'>
+    - Tiếp theo chúng ta sử dụng non-max một cách độc lập (với ô tô, với người,...) --> còn lại box chứa vật thể mà ta mong muốn (hy vọng là như dưới đây).
+    <img src ='https://i.imgur.com/cT3N4Ga.jpg'>
