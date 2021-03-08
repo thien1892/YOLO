@@ -30,3 +30,9 @@
 # Bounding Box Prediction
 - Vấn đề đặt ra là: khi ta chia bức ảnh thành 3x3 hay 19x19 thì vật thể không chỉ ở 1 cửa sổ mà có thể ở nhiều cửa sổ. --> Do đó để tối ưu hóa việc trainning --> ta gắn nhãn vật thể pc=1 ở cửa sổ mà chứa tâm của vật thể, hay nói cách khác (px, py) là 1 điểm thuộc cửa sổ --> khi đó chỉ có 1 ô cửa sổ pc=1 và các ô khác pc =0. **(Đây là một phần của thuật toán YOLO - You only look once!)**
 <img src ='https://i.imgur.com/jqkkhC8.jpg'>
+
+# IOU (Intersection over Union)
+- Phần trên, ta đã tối ưu hóa việc dán nhãn y khi training; khi ta đã có mô hình được đào tạo, khi đó Output sẽ có vấn đề sau: có nhiều ô cửa sổ mà ở đó, mô hình chỉ ra vật thể xuất hiện --> làm sao để lựa chọn tối ưu ô cửa sổ đại diện sẽ chứa vật thể mà không phải những ô cửa sổ khác. Cách đầu tiên để loại bỏ, những ô cửa sổ rối là sử dụng IoU (không phải i own you :) ).
+<img src = 'https://i.imgur.com/IJiC0qH.jpg'>
+
+- Thường chúng ta sẽ giữ lại những ô cửa sổ mà IoU >= 0.5; và nếu chúng ta muốn mô hình nghiêm ngặt hơn nữa thì giữ lại những ô cửa sổ IoU >= 0.6
