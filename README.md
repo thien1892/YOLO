@@ -26,3 +26,7 @@
 
 - Ta thấy với mỗi phần 14x14x3 trong bức ảnh lớn 16x16x3 khi áp dụng cùng 1 mô hình ConvNet thì sẽ dùng lại các tính toán--> Khi đó ta có output sẽ là 2x2x4 sẽ tương ứng với từng phần 14x14x3 trong 16x16x3. Do đó việc áp dụng toàn bức ảnh trong 1 mô hình ConvNet sẽ cho đầu ra cung lúc mà không cần áp dụng ConvNet lên từng phần cửa số làm gia tăng chi phí tính toán!!
 <img src ='https://i.imgur.com/wBpO0gH.jpg'>
+
+# Bounding Box Prediction
+- Vấn đề đặt ra là: khi ta chia bức ảnh thành 3x3 hay 19x19 thì vật thể không chỉ ở 1 cửa sổ mà có thể ở nhiều cửa sổ. --> Do đó để tối ưu hóa việc trainning --> ta gắn nhãn vật thể pc=1 ở cửa sổ mà chứa tâm của vật thể, hay nói cách khác (px, py) là 1 điểm thuộc cửa sổ --> khi đó chỉ có 1 ô cửa sổ pc=1 và các ô khác pc =0. **(Đây là một phần của thuật toán YOLO - You only look once!)**
+<img src ='https://i.imgur.com/jqkkhC8.jpg'>
