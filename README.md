@@ -43,5 +43,10 @@
     - Tiếp theo sử dụng vòng lặp duyệt qua những ô còn lại:
         - Ta lựa chọn ô mà pc cao nhất.
         - Loại bỏ những ô mà vùng chứa vật thể có Iou >= 0.5 với vùng chứa vật thể của ô có pc cao nhất. (việc này đảm bảo những ô có tính trùng lặp khi nhận dạng và xác định vị trí vật thể cao được loại bỏ)
-    - Lưu ý răng nếu y chứa nhiều c1,c2,...., tức là chúng ta muốn xác định nhiều vật thể cùng lúc thì sẽ sử dụng vòng lặp duyệt qua non-max từng vật thể
+    - Lưu ý rằng nếu y chứa nhiều c1,c2,...., tức là chúng ta muốn xác định nhiều vật thể cùng lúc thì sẽ sử dụng vòng lặp duyệt qua non-max từng vật thể
 <img src = 'https://i.imgur.com/KJhA2xX.jpg'>
+
+# Anchor Boxes
+- Ta muốn khi nhìn vào 1 bức tranh không chỉ nhận dạng và xác định vị trí 1 vật thể mà nhiều vật thể --> chúng ta sử dụng anchor boxes.
+<img src ='https://i.imgur.com/CcjKkMz.jpg'>
+- Đối với 1 vật thể khi training lựa chọn ô cell chứa điểm giữa của vật thể; còn với anchor boxes ta lựa chọn cell chứa điểm giữa của vật thể và anchor boxes đối với cell đó có IoU lớn nhất.(Bởi vì ngoài chứa điểm giữa vật thể thì anchor boxes sẽ còn chứa vùng xác định các vật thể khác --> sẽ có nhiều box khác nhau xác định vật thể còn lại --> lựa chon IoU cao nhất sẽ tối ưu hóa cho việc training!)
