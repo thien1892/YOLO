@@ -28,7 +28,7 @@
 <img src ='https://i.imgur.com/wBpO0gH.jpg'>
 
 # Bounding Box Prediction
-- Vấn đề đặt ra là: khi ta chia bức ảnh thành 3x3 hay 19x19 thì vật thể không chỉ ở 1 cửa sổ mà có thể ở nhiều cửa sổ. --> Do đó để tối ưu hóa việc trainning --> ta gắn nhãn vật thể pc=1 ở cửa sổ mà chứa tâm của vật thể, hay nói cách khác (px, py) là 1 điểm thuộc cửa sổ --> khi đó chỉ có 1 ô cửa sổ pc=1 và các ô khác pc =0. **(Đây là một phần của thuật toán YOLO - You only look once!)**
+- Vấn đề đặt ra là: khi ta chia bức ảnh thành 3x3 hay 19x19 thì vật thể không chỉ ở 1 cửa sổ mà có thể ở nhiều cửa sổ. --> Do đó để tối ưu hóa việc trainning --> ta gắn nhãn vật thể pc=1 ở cửa sổ mà chứa tâm của vật thể, hay nói cách khác (bx, by) là 1 điểm thuộc cửa sổ --> khi đó chỉ có 1 ô cửa sổ pc=1 và các ô khác pc =0. **(Đây là một phần của thuật toán YOLO - You only look once!)**
 <img src ='https://i.imgur.com/jqkkhC8.jpg'>
 
 # IOU (Intersection over Union)
@@ -36,3 +36,12 @@
 <img src = 'https://i.imgur.com/IJiC0qH.jpg'>
 
 - Thường chúng ta sẽ giữ lại những ô cửa sổ mà IoU >= 0.5; và nếu chúng ta muốn mô hình nghiêm ngặt hơn nữa thì giữ lại những ô cửa sổ IoU >= 0.6
+# Non-max suppression
+- Đây là phần tôi thấy hơi khó hiểu và phải đọc lại nhiều lần.
+- Bước tiếp theo để clear output của mô hình bên cạnh sử dụng IoU, là chúng ta sẽ sử dụng non-max suppression:
+    - Đầu tiên ta sẽ loại bỏ những ô mà pc =< 0.6, để đảm bảo rằng chỉ có những ô mà xác xuất vật thể xuất hiện cao được giữ lại.
+    - Tiếp theo sử dụng vòng lặp duyệt qua những ô còn lại:
+        - Ta lựa chọn ô mà pc cao nhất.
+        - Loại bỏ những ô mà vùng chứa vật thể có Iou >= 0.5 với vùng chứa vật thể của ô có pc cao nhất. (việc này đảm bảo những ô có tính trùng lặp khi nhận dạng và xác định vị trí vật thể cao được loại bỏ)
+    - Lưu ý răng nếu y chứa nhiều c1,c2,...., tức là chúng ta muốn xác định nhiều vật thể cùng lúc thì sẽ sử dụng vòng lặp duyệt qua non-max từng vật thể
+<img src = 'https://i.imgur.com/KJhA2xX.jpg'>
