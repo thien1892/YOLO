@@ -61,7 +61,9 @@
 - Predition:
     - X --> ConvNet --> y; đối với mỗi cell mô hình sẽ cho ra 2 box xác định vật thể ( trong ví dụ này: người và ô tô):
     <img src ='https://i.imgur.com/2pSfY6o.jpg'>
+    
     - Chúng ta loại bỏ những box mà pc bé (ví dụ pc =< 0.5):
     <img src ='https://i.imgur.com/g4uMfbL.jpg'>
+
     - Tiếp theo chúng ta sử dụng non-max một cách độc lập (với ô tô, với người,...) --> còn lại box chứa vật thể mà ta mong muốn (hy vọng là như dưới đây).
     <img src ='https://i.imgur.com/cT3N4Ga.jpg'>
