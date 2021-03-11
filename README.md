@@ -67,3 +67,11 @@
 
     - Tiếp theo chúng ta sử dụng non-max một cách độc lập (với ô tô, với người,...) --> còn lại box chứa vật thể mà ta mong muốn (hy vọng là như dưới đây).
     <img src ='https://i.imgur.com/cT3N4Ga.jpg'>
+
+# Code
+- Bạn tham khảo mã nguồn YOLO ở những nguồn sau:
+    - [Yolov4](https://github.com/hunglc007/tensorflow-yolov4-tflite)
+    - [Darknet](https://github.com/AlexeyAB/darknet)
+    - [Trang web chính thức của YOLO](https://pjreddie.com/darknet/yolo/)
+
+- Video tham khảo sử dụng yolov4-416x416: [bấm ở đây](https://www.youtube.com/watch?v=NAFU-Ll5ujw)
